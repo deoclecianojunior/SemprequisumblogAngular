@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">SQUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li routerLinkActive="active"  class="nav-item active">
+            <a class="nav-link" [routerLink]="['/home']">
+                <!-- <i class="material-icons">{{menuItem.icon}}</i> -->
+                Home
+            </a>
+        </li>
+        <li  routerLinkActive="active"  class="nav-item">
+            <a class="nav-link" [routerLink]="['/sobre']">
+                Sobre
+            </a>
+        </li>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a *ngIf="logado" class="nav-link" [routerLink]="[menuItem.path]">
+                <!-- <i class="material-icons">{{menuItem.icon}}</i> -->
+                {{menuItem.title}}
+            </a>
+        </li>
+        <li *ngIf="logado" routerLinkActive="active"  class="nav-item">
+            <a class="nav-link" (click)="sair()">
+                Sair  
+            </a>
+        </li>
+      </ul>
+    </div>
+</nav>

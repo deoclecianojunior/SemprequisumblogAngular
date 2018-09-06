@@ -1,0 +1,26 @@
+<div class="card card-descricao-sobre">
+  <div class="card-body">
+    <button [routerLink]="['/postagens/cadastrar']" type="button" class="btn btn-outline-secondary pull-right">Nova</button>
+    <h5 class="card-title">Postagens</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Todas as postagens</h6>
+    <hr>
+    <div class="row">
+      <div class="col-md-4 card-item-potagem" *ngFor="let postagem of postagens | async">
+        <div class="card">
+          <img *ngIf="postagem.tipo_midia == 'link'" class="card-img-top img-resp" src="{{ postagem.midia }}" alt="Card image cap">
+          <div class="card-body">
+            <iframe width="100%" [src]="sanitizerUrl(postagem.midia)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <h5 class="card-title">{{ postagem.titulo }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{postagem.data | date : 'dd/mm/yyyyy HH:mm:ss'}}</h6>
+            <!-- <p class="card-text" [innerHTML]="postagem.texto.substring(0, 100)"></p> -->
+            <div class="btn-group justify-content-between btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/postagens/cadastrar', postagem.id]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-danger" (click)="remover(postagem.id)"><i class="fa fa-eraser" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

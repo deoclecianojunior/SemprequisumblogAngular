@@ -1,0 +1,24 @@
+<div class="card card-descricao-sobre">
+  <div class="card-body">
+    <button [routerLink]="['/usuarios/cadastrar']" type="button" class="btn btn-outline-secondary pull-right">Nova</button>
+    <h5 class="card-title">Usuario</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Todas os usuários</h6>
+    <hr>
+    <div class="row">
+      <div class="col-md-4 card-item-potagem" *ngFor="let usuario of usuarios | async">
+        <div class="card">
+          <img class="card-img-top img-resp" src="{{ usuario.foto }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ usuario.nome }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ usuario.email }}</h6>
+            <div class="btn-group justify-content-between btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/postagens/cadastrar', usuario.id]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-danger" (click)="remover(usuario.id)"><i class="fa fa-eraser" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

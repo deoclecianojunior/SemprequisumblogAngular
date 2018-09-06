@@ -1,0 +1,68 @@
+<div class="card card-descricao-sobre card-borda-azul d-none d-sm-nome d-md-none d-lg-block d-xl-block">
+    <div class="card-body">
+      <div class="card-block">
+        <h6 class="card-subtitle"><b> <i class="fa fa-id-card" aria-hidden="true"></i> Sobre </b></h6>
+      </div>
+      <ul id="lista-sobre">
+        <li><i class="fa fa-map-marker icone-sobre" aria-hidden="true"></i> Moro em <a href="https://pt.wikipedia.org/wiki/Teresina" target="_blank">Teresina - PI</a></li>
+        <li><i class="fa fa-facebook-square icone-sobre" aria-hidden="true"></i> Meu <a href="https://www.facebook.com/DeoclecianoJunior" target="_blank">Facebook</a></li>
+        <li><i class="fa fa-github icone-sobre" aria-hidden="true"></i> Meu <a href="https://github.com/deoclecianojunior" target="_blank">Git Hub</a></li>
+      </ul>
+    </div>
+</div>
+<div class="card card-descricao-sobre card-borda-azul d-none d-sm-nome d-md-none d-lg-block d-xl-block">
+    <div class="card-body">
+      <div class="card-block">
+        <h6 class="card-subtitle"><b><i class="fa fa-lightbulb-o" aria-hidden="true"></i> O Blog</b></h6>
+        <p class="card-text">
+          Eu sempre quis escrever um blog, porém eu nunca tive muita coragem, talvez por ter receio do que as pessoas irão pensar ou dizer, talvez por que eu não sou muito bom com o português, enfim, sempre havia algo que me travava, que me fazia parar, que me fazia desistir da idéia, voltar atrás, até que um dia…
+          <a [routerLink]="['/sobre']" class="btn btn-link pull-right"> <i class="fa fa-arrow-right" aria-hidden="true"></i> Mais</a>
+        </p>
+      </div>
+    </div>
+</div>
+<div class="card card-descricao-sobre card-borda-azul  d-none d-sm-nome d-md-none d-lg-block d-xl-block">
+    <div class="card-body">
+      <div class="card-block">
+        <h6 class="card-subtitle"><b><i class="fa fa-newspaper-o" aria-hidden="true"></i> Assine</b></h6>
+        <p class="card-text">
+          Sempre que eu publicar algo novo você vai saber!
+        </p>
+        <div class="input-group">
+          <input type="email" name="email_assine" id="email_assine" [(ngModel)]="email_assine" class="form-control" placeholder="Assinar">
+          <span class="input-group-btn">
+          <button class="btn btn-outline-primary" (click)="assinar()" type="button">OK!</button>
+          </span>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="card card-descricao-sobre card-borda-azul  d-none d-sm-nome d-md-none d-lg-block d-xl-block">
+    <div class="card-body">
+      <div class="card-block">
+        <h6 class="card-subtitle"><b><i class="fa fa-newspaper-o" aria-hidden="true"></i> Login </b></h6>
+        <hr>
+        <div *ngIf="!logado">
+            <form (ngSubmit)="login()">
+              <div class="form-group">
+                <!-- <label for="exampleInputEmail1">Email</label> -->
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuario.email" aria-describedby="emailHelp" placeholder="Seu email">
+              </div>
+              <div class="form-group">
+                <!-- <label for="exampleInputPassword1">Senha</label> -->
+                <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="usuario.senha" placeholder="Sua senha">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+        </div>
+        <div class="input-group" *ngIf="logado">
+            <div class="text-center">
+              <strong>{{ usuario.nome }}</strong><br>
+              <small>{{ usuario.email }}</small>
+              <img src="{{ usuario.foto }}" class="rounded img-responsive" alt="..." width="100%;">
+            </div>
+            <button type="button" class="btn btn-primary btn-block" (click)="sair()" style="margin-top: 10px;">Sair</button>
+        </div>
+      </div>
+  </div>
+</div>

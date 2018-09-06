@@ -1,0 +1,50 @@
+<div class="card card-descricao-sobre">
+  <div class="card-body">
+    <h5 class="card-title">Usuários</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Cadastrar um novo usuário</h6>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <pre>{{myForm.value | json}}</pre> -->
+        <form #myForm="ngForm" class="was-validated" (ngSubmit)="cadastrar()">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome" id="nome" aria-describedby="tituloHelp" placeholder="Nome" required>
+          </div>
+          <div class="form-group">
+            <label for="nome">E-mail</label>
+            <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" id="email" aria-describedby="tituloHelp" placeholder="E-mail" required="required">
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nome">Senha</label>
+                <input type="text" class="form-control" [(ngModel)]="usuario.senha" name="senha" id="senha" aria-describedby="tituloHelp" placeholder="Senha" required="required">
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nome">Repetir Senha</label>
+                  <input type="text" class="form-control" [(ngModel)]="usuario.repetir_senha" name="repetir_senha" id="repetir_senha" aria-describedby="tituloHelp" placeholder="Repetir senha" required="required">
+                </div>
+              </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Foto</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Escolha um arquivo</label>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{'width': uploadPercent + '%'}" [attr.aria-valuenow]="uploadPercent"  aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

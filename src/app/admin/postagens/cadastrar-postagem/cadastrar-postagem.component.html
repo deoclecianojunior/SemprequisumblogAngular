@@ -1,0 +1,53 @@
+<div class="card card-descricao-sobre">
+    <div class="card-body">
+      <h5 class="card-title">Postagens</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Cadastrar uma nova postagens</h6>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+            <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" class="form-control" [(ngModel)]="postagem.titulo" name="titulo" id="titulo" aria-describedby="tituloHelp" placeholder="Título">
+            </div>
+            <div class="form-group">
+              <label for="texto">Texto</label>
+              <textarea class="form-control" [(ngModel)]="postagem.texto" name="texto" id="texto"></textarea>
+              <!-- <div [froalaEditor] [(ngModel)]="postagem.texto" name="texto">{{postagem.texto}}</div> -->
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="postagem.tipo_midia" name="tipo-midia" id="tipo-midia1" value="upload" checked="checked">
+              <label class="form-check-label" for="tipo-midia1">Upload de imagem</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="postagem.tipo_midia" name="tipo-midia" id="tipo-midia2" value="embed">
+              <label class="form-check-label" for="tipo-midia2">Link para incorporação</label>
+            </div>
+            <br>
+            <div class="input-group mb-3" *ngIf="postagem.tipo_midia == 'upload'">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Arquivo</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Escolha um arquivo</label>
+              </div>
+            </div>
+            <div class="mb-12" *ngIf="postagem.tipo_midia == 'embed'">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="midia">https://youtube.com/uy489jan2380/</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="postagem.midia" name="midia" id="midia" aria-describedby="midia">
+              </div>
+          </div>
+            <div class="progress"  *ngIf="postagem.tipo_midia == 'upload'">
+              <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{'width': uploadPercent + '%'}" [attr.aria-valuenow]="uploadPercent"  aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

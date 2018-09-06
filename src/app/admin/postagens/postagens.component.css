@@ -1,0 +1,10 @@
+.img-resp{
+    object-fit: scale-down;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+.card-item-potagem{
+    margin-top: 20px;
+}
